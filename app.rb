@@ -13,7 +13,8 @@ get '/' do
 end
 
 get '/:key' do
-  "Cate store #{params[:key]}"
+  content_type :json
+  {value: Post.find_by(params[:key]).try(:value)}
 end
 
 post '/set' do
